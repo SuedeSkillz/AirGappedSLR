@@ -5,11 +5,16 @@ Simple scripts that use csv files to perform SLR for multiple devices in air-gap
 To complete an Airgapped SLR of your devices, you will require:
   - A system capable of connecting to the devices (```airgapped```)
   - A system capable of connecting to software.cisco.com (```internet```)
-  - A tfpt server in the airgapped environment for reservation authorization files
+  - A tftp server in the airgapped environment for reservation authorization files
 
 The following tool(s) will need to be installed on both systems (identified as ```airgapped``` and ```internet``` above):
-  - python3.x (Required to run python scripts.  The install instructions here:  https://www.python.org)
-  - Airgapped SLR package
+  - Docker (https://docs.docker.com/get-docker/)
+  - airgappedslr image
+  
+Start a contanier with the image using
+```
+docker run -i --network=host -v "$(pwd):/AirGappedSLR/input" -t diamondtrim/airgappedslr /bin/sh
+```
 
 ## config.ini
 ### airgapped system
@@ -19,6 +24,7 @@ Update the tftp server_type (TFTP or SCP), server_ip and server_path in input/co
 Update the API client ID and secret in input/config.ini.  To get your client ID and secret, you will need register your application (https://apidocs-prod.cisco.com/explore;category=6083723a25042e9035f6a753;sgroup=6083723b25042e9035f6a775)
 
 ## DevicesToLicense.csv
+### airgapped system
 List all devices IP address in DevicesToLicense.csv.  Example csv in input/DevicesToLicense.csv.
 
 ##Execution
