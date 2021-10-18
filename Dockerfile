@@ -3,7 +3,7 @@ RUN apk update
 RUN apk add openssh
 ENV PYTHONUNBUFFERED=1
 RUN apk add --update --no-cache python3 && ln -sf python3 /usr/bin/python
-RUN apk --no-cache add build-base libffi-dev openssl-dev openssl python3-dev tftp-hpa
+RUN apk --no-cache add build-base libffi-dev python3-dev tftp-hpa
 RUN python3 -m ensurepip
 RUN pip3 install --no-cache --upgrade pip setuptools
 RUN pip install update
