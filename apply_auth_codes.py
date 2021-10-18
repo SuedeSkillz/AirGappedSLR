@@ -77,9 +77,8 @@ with open('input/DevicesToLicense.csv', mode='r') as csv_file:
         except KeyboardInterrupt:
             exit()
         except:
-            print(colored('Unexpected error:', sys.exc_info()[0] + '\n', 'red'))
-            print(colored('Unexpected error:', sys.exc_info()[1] + '\n', 'red'))
-            exit()
+            print(colored(sys.exc_info()[0], 'red'))
+            print(colored(sys.exc_info()[1], 'red'))
 
         command = ["end", apply_authorization_code_command + authorization_file]
 
@@ -124,8 +123,8 @@ with open('input/DevicesToLicense.csv', mode='r') as csv_file:
             csv_writer.writerow(row)
             exit()
         except:
-            print(colored('Unexpected error:', sys.exc_info()[0] + '\n', 'red'))
-            print(colored('Unexpected error:', sys.exc_info()[1] + '\n', 'red'))
+            print(colored(sys.exc_info()[0], 'red'))
+            print(colored(sys.exc_info()[1], 'red'))
             row['ConfirmationCode'] = 'ERROR'
             csv_writer.writerow(row)
             continue

@@ -23,7 +23,7 @@ device = {
     'username': user,
     'password': passw
 }
-
+temp_licenses = ""
 with open('input/DevicesToLicense.csv', mode='r') as csv_file:
     csv_reader = csv.DictReader(csv_file)
     temp_csv_file = open('input/temp.csv', 'w')
@@ -94,7 +94,7 @@ with open('input/DevicesToLicense.csv', mode='r') as csv_file:
             # Run through entitlement command output line by line
             for entitlement_tag in udi:
                 # If I have an entitlement tag ...
-                if "Entitlement Tag:" in entitlement_tag:
+                if "Entitlement " in entitlement_tag:
                     # ... and its the first tag in the list
                     if first:
                         # save the entitlement tag in a temp variable
