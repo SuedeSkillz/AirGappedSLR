@@ -12,9 +12,10 @@ RUN pip install requests
 RUN pip install netmiko
 RUN pip install tftpy
 WORKDIR /AirGappedSLR/input
-WORKDIR ..
+WORKDIR /AirGappedSLR/example
 ADD *.csv .
 ADD *.ini .
+WORKDIR ..
 ADD *.py .
 ADD *.md .
 ADD *.sh .
